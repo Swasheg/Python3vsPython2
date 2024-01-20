@@ -26,8 +26,8 @@ def remove_common_lines(file1_path, file2_path, output1_path,output2_path,output
     return len(different_lines1), len(different_lines2), len(common_lines)
 
 if __name__ == "__main__":
-    file1_path = '/python3_file_new.txt'
-    file2_path = '/python2_file_new.txt'
+    file1_path = '/python3_file_new.py'
+    file2_path = '/python2_file_new.py'
     output1_path = '/python3.txt'
     output2_path = '/python2.txt'
     output3_path = '/common.txt'
