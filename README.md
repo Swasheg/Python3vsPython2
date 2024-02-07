@@ -3,7 +3,7 @@ This is a script to scrape python programming examples and adding label and  tru
 
 Step 1:
 first run the getfiles_from_github_repo.py script to generate python3 file
-and run 3to2 to convert the python3 script to python2 format ( there might be some errors in this step which requires you to address by properly formatting the python3 script generated as the website it is scraping for some program examples doesnt have proper python3 format)
+and run 3to2 to convert the python3 script to python2 format and generate a python2 file
 
 
 step 2:
