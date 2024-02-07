@@ -31,11 +31,11 @@ def remove_common_lines(file1_path, file2_path, output1_path,output2_path,output
 
 
 if __name__ == "__main__":
-    file1_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python31_script_from_repos_test.py'
-    file2_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python21_script_from_repos_test.py'
-    output1_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python3_1.txt'
-    output2_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python2_1.txt'
-    output3_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/common_1.txt'
+    file1_path = '/mention/your/local/file/python31_script_from_repos_test.py'
+    file2_path = '/mention/your/local/file/python21_script_from_repos_test.py'
+    output1_path = '/mention/your/local/file/python3_1.txt'
+    output2_path = '/mention/your/local/file/python2_1.txt'
+    output3_path = '/mention/your/local/file/common_1.txt'
 
     python3_nof_lines, python2_nof_lines,common_nof_lines = remove_common_lines(file1_path, file2_path, output1_path, output2_path,output3_path)
 
