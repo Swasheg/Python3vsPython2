@@ -35,7 +35,10 @@ def generate_output_csv(file1_path, file2_path, file3_path, output_file_path):
         " range": re.compile(r"(\srange\s*\()"),
         'u"': re.compile(r'(u\"\s*(\S+))'),
         "u'": re.compile(r"(u\'\s*(\S+))"),
-        "print ": re.compile(r"print\s*\s*(\S+)")
+        "print ": re.compile(r"print\s*\s*(\S+)"),
+        "unicode(": re.compile(r"\bunicode\("),
+        "__next__(": re.compile(r"\s__next__\s*\("),
+        "raw_input(": re.compile(r"\sraw_input\s*\(")
     }
 
     # Function to extract matched strings for a pattern
@@ -57,7 +60,10 @@ def generate_output_csv(file1_path, file2_path, file3_path, output_file_path):
         matched_strings[" range"]).combine_first(
         matched_strings['u"']).combine_first(
         matched_strings['u\'']).combine_first(
-        matched_strings["print "])
+        matched_strings["print "]).combine_first(
+        matched_strings['unicode(']).combine_first(
+        matched_strings['__next__(']).combine_first(
+        matched_strings['raw_input('])
 
     output_df = output_df[['line of code', 'true class','true explanation']]
 
@@ -65,8 +71,8 @@ def generate_output_csv(file1_path, file2_path, file3_path, output_file_path):
     output_df.to_csv(output_file_path, index=False)
 
 if __name__ == "__main__":
-    input1_path = '/python3.txt'
-    input2_path = '/python2.txt'
-    input3_path = '/common.txt'
-    output_csv_path = '/csv_with_trueexp.csv'
+    input1_path = '/mention/your/local/file_path/python3_1.txt'
+    input2_path = '/mention/your/local/file_path/python2_1.txt'
+    input3_path = '/mention/your/local/file_path/common_1.txt'
+    output_csv_path = '/mention/your/local/file_path/csv_with_trueexp.csv'
     generate_output_csv(input1_path, input2_path, input3_path,output_csv_path)
