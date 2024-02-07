@@ -1,3 +1,4 @@
+import re
 def remove_common_lines(file1_path, file2_path, output1_path,output2_path,output3_path):
     with open(file1_path, 'r') as file1:
         lines1 = [line.strip() for line in file1.readlines() if line.strip()]
@@ -12,25 +13,29 @@ def remove_common_lines(file1_path, file2_path, output1_path,output2_path,output
     different_lines1 = [line for line in lines1 if line not in common_lines]
     different_lines2 = [line for line in lines2 if line not in common_lines]
     # Sort modified lines alphabetically
-    different_lines1.sort()
-    different_lines2.sort()
+    #different_lines1.sort()
+    #different_lines2.sort()
     with open(output1_path, 'w') as output1:
         output1.write('\n'.join(different_lines1))
 
     with open(output2_path, 'w') as output2:
         output2.write('\n'.join(different_lines2))
+
     with open(output3_path, 'w') as output3:
         output3.write('\n'.join(common_lines))
 
     # Return the number of lines in each file after writing
     return len(different_lines1), len(different_lines2), len(common_lines)
 
+
+
+
 if __name__ == "__main__":
-    file1_path = '/python3_file_new.py'
-    file2_path = '/python2_file_new.py'
-    output1_path = '/python3.txt'
-    output2_path = '/python2.txt'
-    output3_path = '/common.txt'
+    file1_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python31_script_from_repos_test.py'
+    file2_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python21_script_from_repos_test.py'
+    output1_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python3_1.txt'
+    output2_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python2_1.txt'
+    output3_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/common_1.txt'
 
     python3_nof_lines, python2_nof_lines,common_nof_lines = remove_common_lines(file1_path, file2_path, output1_path, output2_path,output3_path)
 
