@@ -28,7 +28,7 @@ def get_intermediate_layer_model(model, layer_name):
 
 def train(model, x_train, y_train, x_test, y_test, max_len, batch_size, verbose, epochs, save_path):
     ear = EarlyStopping(monitor='val_acc', patience=5)
-    mcp = ModelCheckpoint(join(save_path, 'filter128_win5_LR_0.005_altered.h5'),
+    mcp = ModelCheckpoint(join(save_path, 'yourmodel.h5'),
                           monitor="val_acc",
                           save_best_only=True,
                           save_weights_only=False)
@@ -239,6 +239,7 @@ if __name__ == '__main__':
         save_path = "/mention/your/save/path/"
         model_path = "/mention/your/model/path.h5"
         result_path = "/mention/your/result/path.csv"
+        save_folder = "mention/your/path/to/save/plots/"
         learning_rate = 0.1
 
         # limit gpu memory
@@ -280,7 +281,6 @@ if __name__ == '__main__':
         predict_df['predict_score'] = preds
         layer_name = 'relu'
         intermediate_model = get_intermediate_layer_model(model, layer_name)
-        save_folder = "plots/plots_for_2_classes_with_common_lines/filter128_win5_LR_0.005_altered"
         activation_list = []
         predict_df['ExtractedWord'] = ""
         for idx, (line, data_line) in enumerate(zip(x_test_preprocessed[0], x_test)):
