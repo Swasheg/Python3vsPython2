@@ -236,9 +236,9 @@ if __name__ == '__main__':
         max_len = 100
         win_size = 5
         val_size = 0.1
-        save_path = "/Users/hegdeswastik/webscraping_python/python2vspython3/model_results/"
-        model_path = "/Users/hegdeswastik/webscraping_python/python2vspython3/model_results/filter128_win5_LR_0.1.h5"
-        result_path = "/Users/hegdeswastik/webscraping_python/python2vspython3/model_results/filter128_win5_LR_0.1.csv"
+        save_path = "/mention/your/save/path/"
+        model_path = "/mention/your/model/path.h5"
+        result_path = "/mention/your/result/path.csv"
         learning_rate = 0.1
 
         # limit gpu memory
@@ -251,14 +251,16 @@ if __name__ == '__main__':
 
         # prepare data
         # preprocess is handled in utils.data_generator
-        python3paths = '/Users/hegdeswastik/webscraping_python/python2vspython3/python2_1.txt'
-        python2path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python3_1.txt'
-        common_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/common_1.txt'
+        python3paths = '/mention/your/file/path/python2_1.txt'
+        python2path = '/mention/your/file/path/python3_1.txt'
+        common_path = 'mention/your/file/path/common_1.txt'
         python3_df = read_raw_text_file(python3paths, 1)
         python2_df = read_raw_text_file(python2path, 0)
+        #comment the below line to not include the common path
         common_df = read_raw_text_file(common_path, 1)
         # Combine the DataFrames into one big DataFrame
         result_df = pd.concat([python3_df, python2_df, common_df], ignore_index=True)
+        #remove comments on the below line to not include the common parts
         #result_df = pd.concat([python3_df, python2_df], ignore_index=True)
         data = result_df['FileContent'].values.tolist()
         print(data)
