@@ -29,7 +29,7 @@ def get_intermediate_layer_model(model, layer_name):
 
 def train(model, x_train, y_train, x_test, y_test, max_len, batch_size, verbose, epochs, save_path):
     ear = EarlyStopping(monitor='val_acc', patience=5)
-    mcp = ModelCheckpoint(join(save_path, 'filter128winsize5_LR0.05_common2.h5'),
+    mcp = ModelCheckpoint(join(save_path, 'yourmodel.h5'),
                           monitor="val_acc",
                           save_best_only=True,
                           save_weights_only=False)
@@ -256,9 +256,10 @@ if __name__ == '__main__':
         max_len = 100
         win_size = 5
         val_size = 0.1
-        save_path = "/Users/hegdeswastik/webscraping_python/python2vspython3/model_results/"
-        model_path = "/Users/hegdeswastik/webscraping_python/python2vspython3/model_results/filter128_win5_LR_0.1.h5"
-        result_path = "/Users/hegdeswastik/webscraping_python/python2vspython3/model_results/filter128_win5_LR_0.1.csv"
+        save_path = "/mention/your/save/path/"
+        model_path = "/mention/your/model/path.h5"
+        result_path = "/mention/your/result/path/.csv"
+        save_folder = "/provide/your/path/to/save/plots"
         learning_rate = 0.1
 
         if limit > 0:
@@ -271,9 +272,9 @@ if __name__ == '__main__':
 
         # prepare data
         # preprocess is handled in utils.data_generator
-        python3paths = '/Users/hegdeswastik/webscraping_python/python2vspython3/python2_1.txt'
-        python2path = '/Users/hegdeswastik/webscraping_python/python2vspython3/python3_1.txt'
-        common_path = '/Users/hegdeswastik/webscraping_python/python2vspython3/common_1.txt'
+        python3paths = '/mention/your/file/path/python2_1.txt'
+        python2path = '/mention/your/file/path/python3_1.txt'
+        common_path = '/mention/your/file/path/common_1.txt'
         python3_df = read_raw_text_file(python3paths, 1)
         python2_df = read_raw_text_file(python2path, 0)
         common_df = read_raw_text_file(common_path, 2)
@@ -301,7 +302,6 @@ if __name__ == '__main__':
 
         layer_name = 'relu'
         intermediate_model = get_intermediate_layer_model(model, layer_name)
-        save_folder = "plots/plots_for_2_classes_with_common_lines"
         activation_list = []
         predict_df['ExtractedWord'] = ""
         for idx, (line, data_line) in enumerate(zip(x_test_preprocessed[0], x_test)):
