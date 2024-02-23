@@ -252,8 +252,8 @@ if __name__ == '__main__':
 
         # prepare data
         # preprocess is handled in utils.data_generator
-        python3paths = '/mention/your/file/path/python2_1.txt'
-        python2path = '/mention/your/file/path/python3_1.txt'
+        python3paths = '/mention/your/file/path/python3_1.txt'
+        python2path = '/mention/your/file/path/python2_1.txt'
         common_path = 'mention/your/file/path/common_1.txt'
         python3_df = read_raw_text_file(python3paths, 1)
         python2_df = read_raw_text_file(python2path, 0)
